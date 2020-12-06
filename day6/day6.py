@@ -2,44 +2,39 @@
 import doctest
 import collections
 def solve_2(group):
-    amount_of_people=len(group)
-    d=collections.defaultdict(lambda: 0)
-    for line in group:
-        for let in line:
-            d[let] += 1
+    concatted=''.join(group)
+    counted=collections.Counter(concatted)
 
-    return sum([1 for let in d.keys() if d[let]==amount_of_people])
+    return sum([1 for let in counted.keys() if counted[let]==len(group)])
 
 def solve(group):
-    d=collections.defaultdict(lambda: 0)
-    for line in group:
-        for let in line:
-            d[let] = 1
+    concatted=''.join(group)
+    counted=collections.Counter(concatted)
 
-    return len(d.keys())
+    return len(counted.keys())
 
 
 # invoking the testmod function
 doctest.testmod(name='f1', verbose=True)
 
 def main():
-    counts_1=[]
-    counts_2=[]
     f=open("input", "r")
     lines=[x.strip() for x in f.readlines()]
 
+    counts_1=0
+    counts_2=0
     group=[]
     for line in lines:
         if line == '':
-            counts_1.append(solve(group))
-            counts_2.append(solve_2(group))
+            counts_1 += solve(group)
+            counts_2 += solve_2(group)
             group=[]
         else:
             group.append(line)
-    counts_1.append(solve(group))
-    counts_2.append(solve_2(group))
+    counts_1 += solve(group)
+    counts_2 += solve_2(group)
 
-    print(sum(counts_1))
-    print(sum(counts_2))
+    print(counts_1)
+    print(counts_2)
 
 main()
