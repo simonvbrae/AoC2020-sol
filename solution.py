@@ -1,13 +1,13 @@
 # importing the module
 import doctest
 
-def f1(a1):
+def solve_1(input):
     """
-    >>> f1()
+    >>> solve_1()
     BFFFBBFRRR: row 70, column 7, seat ID 567.
-    >>> f2()
+    >>> solve_1()
     FFFBBBFRRR: row 14, column 7, seat ID 119.
-    >>> f3()
+    >>> solve_1()
     BBFFBBFRLL: row 102, column 4, seat ID 820.
     """
     result=0
@@ -15,7 +15,7 @@ def f1(a1):
 
 
 # invoking the testmod function
-doctest.testmod(name='f1', verbose=True)
+doctest.testmod(name='solve_1', verbose=True)
 
 def main():
     f=open("input", "r")
